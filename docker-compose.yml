@@ -9,12 +9,12 @@ services:
   client-gateway:
     build: ./client-gateway
     ports:
-      - ${CLIENT_GATEWAY_PORT}:3000
+      - ${CLIENT_GATEWAY_PORT}:${CLIENT_GATEWAY_PORT}
     volumes:
       - ./client-gateway/src:/usr/src/app/src
     command: npm run start:dev
     environment:
-      - PORT=3000
+      - PORT=${CLIENT_GATEWAY_PORT}
       - NATS_SERVERS=nats://nats-server:4222
 
   products-ms:
